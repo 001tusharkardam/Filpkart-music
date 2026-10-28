@@ -17,7 +17,7 @@ export default function Sidebar({ currentNav, setCurrentNav }) {
     { id: 'explore', label: 'Explore', icon: Compass },
     { id: 'library', label: 'Library', icon: Library },
     { id: 'history', label: 'History', icon: History },
-    { id: 'liked', label: 'Liked Songs', icon: Heart }
+    { id: 'liked', label: 'Liked', icon: Heart }
   ];
 
   const playlists = [
