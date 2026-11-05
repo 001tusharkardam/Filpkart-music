@@ -31,7 +31,7 @@ export function AuthProvider({ children }) {
         isVerified: true,
         role: 'vip_subscriber',
         plan: 'Flipkart VIP Plus • 320kbps',
-        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80',
+        avatar: 'https://api.dicebear.com/7.x/adventurer/svg?seed=TusharMusicVIP',
         joinedAt: '28 Oct 2026',
         permissions: ['unlimited_streaming', 'studio_hd_320kbps', 'synced_lyrics', 'ad_free', 'offline_mode']
       }

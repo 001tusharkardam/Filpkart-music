@@ -47,10 +47,10 @@ export default function ProfileModal() {
   };
 
   const avatarOptions = [
-    'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80',
-    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80',
-    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&auto=format&fit=crop&q=80',
-    'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80'
+    'https://api.dicebear.com/7.x/adventurer/svg?seed=TusharMusicVIP',
+    'https://api.dicebear.com/7.x/adventurer/svg?seed=AlexSoundWave',
+    'https://api.dicebear.com/7.x/adventurer/svg?seed=SarahBassDrop',
+    'https://api.dicebear.com/7.x/adventurer/svg?seed=JordanGroove'
   ];
 
   const handleExportData = () => {

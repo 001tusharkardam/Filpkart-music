@@ -166,6 +166,188 @@
   animation: pulse 1s infinite;
 }
 
+/* Voice Search Modal & Live Overlay */
+.voice-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeInOverlay 0.2s ease-out;
+}
+
+.voice-modal-card {
+  width: 100%;
+  max-width: 460px;
+  background: #14151b;
+  border: 1px solid rgba(255, 159, 0, 0.35);
+  border-radius: 24px;
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 159, 0, 0.15);
+  animation: scaleUpModal 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.voice-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.voice-modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.voice-pulse-ring {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.voice-pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: rgba(255, 159, 0, 0.2);
+  animation: voiceRings 1.8s infinite ease-out;
+}
+
+@keyframes voiceRings {
+  0% { transform: scale(0.85); opacity: 0.8; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+.voice-mic-active {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff9f00 0%, #ff5252 100%);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 28px rgba(255, 159, 0, 0.45);
+}
+
+.voice-modal-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.voice-status-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.voice-live-transcript {
+  font-size: 14px;
+  color: var(--flipkart-yellow);
+  min-height: 22px;
+  font-weight: 600;
+}
+
+.voice-eq-bars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+}
+
+.v-bar {
+  width: 4px;
+  background-color: var(--flipkart-yellow);
+  border-radius: 2px;
+  animation: eqBounce 0.8s infinite alternate ease-in-out;
+}
+
+.v-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+.v-bar:nth-child(2) { height: 80%; animation-delay: 0.25s; }
+.v-bar:nth-child(3) { height: 100%; animation-delay: 0.4s; }
+.v-bar:nth-child(4) { height: 60%; animation-delay: 0.15s; }
+.v-bar:nth-child(5) { height: 90%; animation-delay: 0.3s; }
+
+.voice-quick-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.voice-try-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: 100%;
+}
+
+.voice-chip-btn {
+  padding: 6px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.voice-chip-btn:hover {
+  background: rgba(255, 159, 0, 0.15);
+  border-color: var(--flipkart-yellow);
+  color: var(--flipkart-yellow);
+}
+
+.voice-notice-toast {
+  position: fixed;
+  top: 74px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3100;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: rgba(20, 21, 27, 0.95);
+  border: 1px solid rgba(255, 71, 87, 0.4);
+  color: #fff;
+  font-size: 13px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+  animation: slideDownToast 0.3s ease-out;
+}
+
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.15); }

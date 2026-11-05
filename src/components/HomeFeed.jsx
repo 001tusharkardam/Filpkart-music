@@ -99,38 +99,50 @@ export default function HomeFeed() {
   const featuredArtists = [
     {
       name: 'Arijit Singh',
-      avatar: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&auto=format&fit=crop&q=80',
-      subscribers: '32M Listeners',
+      avatar: 'https://cdn-images.dzcdn.net/images/artist/ac5350cff290edd5b69fa584b8b1bd4f/500x500-000000-80-0-0.jpg',
+      subscribers: '38M Listeners',
       topSong: LOCAL_CATALOG[0]
     },
     {
+      name: 'Diljit Dosanjh',
+      avatar: 'https://cdn-images.dzcdn.net/images/artist/79b85e695e0ca6529e56bf3b628e92bd/500x500-000000-80-0-0.jpg',
+      subscribers: '28M Listeners',
+      topSong: LOCAL_CATALOG[15] || LOCAL_CATALOG[2]
+    },
+    {
+      name: 'Karan Aujla',
+      avatar: 'https://cdn-images.dzcdn.net/images/artist/a91a1d5ea91e85e4f0966569b50e8d6a/500x500-000000-80-0-0.jpg',
+      subscribers: '24M Listeners',
+      topSong: LOCAL_CATALOG[2]
+    },
+    {
       name: 'The Weeknd',
-      avatar: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&auto=format&fit=crop&q=80',
+      avatar: 'https://cdn-images.dzcdn.net/images/artist/581693b4724a7fcfa754455101e13a44/500x500-000000-80-0-0.jpg',
       subscribers: '105M Listeners',
       topSong: LOCAL_CATALOG[6]
     },
     {
       name: 'AP Dhillon',
-      avatar: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&auto=format&fit=crop&q=80',
-      subscribers: '18M Listeners',
+      avatar: 'https://cdn-images.dzcdn.net/images/artist/52594ac9fa763dc163ed13d21cb130ec/500x500-000000-80-0-0.jpg',
+      subscribers: '19M Listeners',
       topSong: LOCAL_CATALOG[3]
     },
     {
+      name: 'Shreya Ghoshal',
+      avatar: 'https://cdn-images.dzcdn.net/images/artist/3bb832d37d10ff2affcfa9afdc7c68a0/500x500-000000-80-0-0.jpg',
+      subscribers: '34M Listeners',
+      topSong: LOCAL_CATALOG[1]
+    },
+    {
       name: 'Dua Lipa',
-      avatar: 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=600&auto=format&fit=crop&q=80',
-      subscribers: '65M Listeners',
+      avatar: 'https://cdn-images.dzcdn.net/images/artist/877872aaf75694f11d53c318700ab2b5/500x500-000000-80-0-0.jpg',
+      subscribers: '68M Listeners',
       topSong: LOCAL_CATALOG[8]
     },
     {
-      name: 'Karan Aujla',
-      avatar: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop&q=80',
-      subscribers: '22M Listeners',
-      topSong: LOCAL_CATALOG[2]
-    },
-    {
       name: 'Jasleen Royal',
-      avatar: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&auto=format&fit=crop&q=80',
-      subscribers: '14M Listeners',
+      avatar: 'https://cdn-images.dzcdn.net/images/artist/c83791c10f0ec33e1d8a18b1a8ff9f84/500x500-000000-80-0-0.jpg',
+      subscribers: '16M Listeners',
       topSong: LOCAL_CATALOG[5]
     }
   ];

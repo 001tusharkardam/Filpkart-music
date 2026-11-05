@@ -104,15 +104,24 @@ export function PlayerProvider({ children }) {
     // Update Queue
     if (newQueue && newQueue.length > 0) {
       setQueue(newQueue);
+      queueRef.current = newQueue;
       const foundIdx = newQueue.findIndex(t => t.id === track.id);
-      setCurrentIndex(foundIdx !== -1 ? foundIdx : 0);
+      const targetIdx = foundIdx !== -1 ? foundIdx : 0;
+      setCurrentIndex(targetIdx);
+      currentIndexRef.current = targetIdx;
     } else {
       const idx = queueRef.current.findIndex(t => t.id === track.id);
       if (idx !== -1) {
         setCurrentIndex(idx);
+        currentIndexRef.current = idx;
       } else {
-        setQueue(prev => [...prev, track]);
-        setCurrentIndex(queueRef.current.length);
+        // Ensure queue is populated so next track always works
+        const remainingCatalog = LOCAL_CATALOG.filter(t => t.id !== track.id);
+        const assembledQueue = [track, ...remainingCatalog];
+        setQueue(assembledQueue);
+        queueRef.current = assembledQueue;
+        setCurrentIndex(0);
+        currentIndexRef.current = 0;
       }
     }
 
@@ -127,8 +136,13 @@ export function PlayerProvider({ children }) {
     });
     setCurrentTrack(track);
 
-    // Load authentic audio URL
-    let src = track.audioUrl || (LOCAL_CATALOG[0].audioUrl);
+    // Load authentic audio URL with distinct hash fallback
+    let src = track.audioUrl;
+    if (!src) {
+      const str = (track.id || track.title || 'song');
+      const hash = Math.abs(str.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0));
+      src = LOCAL_CATALOG[hash % LOCAL_CATALOG.length].audioUrl;
+    }
     
     // Set initial full song duration (no 30s clamping!)
     if (track.durationMs) {
@@ -213,18 +227,49 @@ export function PlayerProvider({ children }) {
 
   const handleNextTrack = useCallback(() => {
     const curQueue = queueRef.current;
-    if (!curQueue || curQueue.length === 0) return;
-    let nextIdx;
+    if (!curQueue || curQueue.length === 0) {
+      if (LOCAL_CATALOG.length > 0) {
+        setQueue(LOCAL_CATALOG);
+        queueRef.current = LOCAL_CATALOG;
+        playTrack(LOCAL_CATALOG[0], LOCAL_CATALOG);
+      }
+      return;
+    }
+
+    let nextIdx = 0;
     if (isShuffleRef.current) {
       nextIdx = Math.floor(Math.random() * curQueue.length);
       if (curQueue.length > 1 && nextIdx === currentIndexRef.current) {
         nextIdx = (nextIdx + 1) % curQueue.length;
       }
     } else {
-      nextIdx = (currentIndexRef.current + 1) % curQueue.length;
+      nextIdx = currentIndexRef.current + 1;
+      // End of playlist reached: Autoplay continuous playback or loop
+      if (nextIdx >= curQueue.length) {
+        if (repeatModeRef.current === 'all') {
+          nextIdx = 0;
+        } else {
+          // Autoplay: append fresh tracks from LOCAL_CATALOG that aren't recently played
+          const unseen = LOCAL_CATALOG.filter(
+            lt => !curQueue.some(cq => cq.id === lt.id || cq.title.toLowerCase() === lt.title.toLowerCase())
+          );
+          if (unseen.length > 0) {
+            const updated = [...curQueue, ...unseen];
+            setQueue(updated);
+            queueRef.current = updated;
+            nextIdx = curQueue.length;
+          } else {
+            // Re-shuffle or start from track 0 smoothly
+            nextIdx = 0;
+          }
+        }
+      }
     }
+
+    const nextTrack = queueRef.current[nextIdx] || curQueue[0];
     setCurrentIndex(nextIdx);
-    playTrack(curQueue[nextIdx]);
+    currentIndexRef.current = nextIdx;
+    playTrack(nextTrack);
   }, [playTrack]);
 
   const seekTo = useCallback((seconds) => {
@@ -410,9 +455,13 @@ export function PlayerProvider({ children }) {
     };
 
     const onError = (e) => {
-      console.warn("Audio playback error event:", e);
+      console.warn("Audio playback error event, auto-advancing to next track:", e);
       setIsBuffering(false);
       setIsPlaying(false);
+      // Auto-recover so the player never freezes on broken streams
+      setTimeout(() => {
+        handleNextTrack();
+      }, 800);
     };
 
     audio.addEventListener('play', onPlay);

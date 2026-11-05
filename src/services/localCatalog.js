@@ -282,56 +282,237 @@ export const LOCAL_CATALOG = [
       { time: 82, text: "I'm in love with the shape of you" },
       { time: 96, text: "We push and pull like a magnet do" }
     ]
+  },
+  {
+    id: 'local-apna-bana-le',
+    title: 'Apna Bana Le',
+    artist: 'Arijit Singh, Sachin-Jigar',
+    album: 'Bhediya',
+    artwork: 'https://c.saavncdn.com/195/Heartbeats-Bollywood-Hindi-2026-20260813104641-500x500.jpg',
+    audioUrl: 'https://aac.saavncdn.com/195/27f344367a0a19f4aacaa76f9f80059f_320.mp4',
+    duration: '4:21',
+    durationMs: 261000,
+    releaseYear: '2022',
+    genre: 'Bollywood Romance',
+    plays: '520M',
+    explicit: false,
+    isFullLength: true,
+    quality: '320kbps Ultra HD',
+    lyrics: [
+      { time: 0, text: "♪ (Sufi Guitar & Violin Intro) ♪" },
+      { time: 12, text: "Tu mera koi na hoke bhi kuch laage" },
+      { time: 26, text: "Tu mera koi na hoke bhi kuch laage" },
+      { time: 40, text: "Kiya re jo bhi tune kaise kiya re" },
+      { time: 54, text: "Jiya ko mere baandh aise liya re" },
+      { time: 68, text: "Apna bana le piya, apna bana le piya" },
+      { time: 82, text: "Dil ke nagar mein shehar tu basa le piya" },
+      { time: 98, text: "Apna bana le piya, apna bana le piya..." }
+    ]
+  },
+  {
+    id: 'local-tum-hi-ho',
+    title: 'Tum Hi Ho',
+    artist: 'Arijit Singh & Mithoon',
+    album: 'Aashiqui 2',
+    artwork: 'https://c.saavncdn.com/430/Aashiqui-2-Hindi-2013-500x500.jpg',
+    audioUrl: 'https://aac.saavncdn.com/430/5c5ea5cc00e3bff45616013226f376fe_320.mp4',
+    duration: '4:22',
+    durationMs: 262000,
+    releaseYear: '2013',
+    genre: 'Bollywood Classic',
+    plays: '980M',
+    explicit: false,
+    isFullLength: true,
+    quality: '320kbps Ultra HD',
+    lyrics: [
+      { time: 0, text: "♪ (Iconic Melancholic Piano Intro) ♪" },
+      { time: 14, text: "Hum tere bin ab reh nahi sakte" },
+      { time: 26, text: "Tere bina kya wajood mera" },
+      { time: 38, text: "Tujhse juda gar ho jaayenge" },
+      { time: 50, text: "Toh khud se hi ho jaayenge judaa" },
+      { time: 62, text: "Kyunki tum hi ho, ab tum hi ho" },
+      { time: 76, text: "Zindagi ab tum hi ho" },
+      { time: 88, text: "Chain bhi, mera dard bhi" },
+      { time: 102, text: "Meri aashiqui ab tum hi ho" }
+    ]
+  },
+  {
+    id: 'local-brown-munde',
+    title: 'Brown Munde',
+    artist: 'AP Dhillon, Gurinder Gill & Shinda Kahlon',
+    album: 'Brown Munde',
+    artwork: 'https://c.saavncdn.com/973/Brown-Munde-Punjabi-2020-20200915220456-500x500.jpg',
+    audioUrl: 'https://aac.saavncdn.com/973/76216adb3df5ef476f948891b40efb7a_320.mp4',
+    duration: '4:08',
+    durationMs: 248000,
+    releaseYear: '2020',
+    genre: 'Punjabi Hip-Hop',
+    plays: '680M',
+    explicit: false,
+    isFullLength: true,
+    quality: '320kbps Ultra HD',
+    lyrics: [
+      { time: 0, text: "♪ (Trap Beat & 808 Bass Drops) ♪" },
+      { time: 10, text: "Desi je geet aa, trap je beat aa" },
+      { time: 22, text: "Sir kadd gajde speaker'an ch wajde" },
+      { time: 34, text: "Brown Munde!" },
+      { time: 46, text: "Geetan di machine kude, kardi ae beat groove" },
+      { time: 58, text: "Kudiye tu saadi gal mann kude" },
+      { time: 70, text: "Asi ghumde aa shaan naal" },
+      { time: 84, text: "Brown Munde! Brown Munde!" }
+    ]
+  },
+  {
+    id: 'local-softly',
+    title: 'Softly',
+    artist: 'Karan Aujla & Ikky',
+    album: 'Four You',
+    artwork: 'https://c.saavncdn.com/538/Four-You-Punjabi-2023-20230203061445-500x500.jpg',
+    audioUrl: 'https://aac.saavncdn.com/538/727114725cd7ec508b1df0a7e4515e5e_320.mp4',
+    duration: '2:36',
+    durationMs: 156000,
+    releaseYear: '2023',
+    genre: 'Punjabi Pop',
+    plays: '490M',
+    explicit: false,
+    isFullLength: true,
+    quality: '320kbps Ultra HD',
+    lyrics: [
+      { time: 0, text: "♪ (R&B Groovy Acoustic Guitar Intro) ♪" },
+      { time: 10, text: "Kardi ae tease kude, lagdi pyari tu" },
+      { time: 22, text: "Akhiyan naal dil utte waar kare bhari tu" },
+      { time: 34, text: "Softly softly aake gal sun jaa" },
+      { time: 46, text: "Mere kol aake tu beh jaa soniye" },
+      { time: 58, text: "Tere bin lagda na dil mera" },
+      { time: 72, text: "Karan Aujla di beat te nach kude!" }
+    ]
+  },
+  {
+    id: 'local-kahani-suno',
+    title: 'Kahani Suno 2.0',
+    artist: 'Kaifi Khalil',
+    album: 'Kahani Suno',
+    artwork: 'https://c.saavncdn.com/352/Kahani-Suno-2-0-Urdu-2022-20230629165609-500x500.jpg',
+    audioUrl: 'https://aac.saavncdn.com/352/39bd21740d8bc82d8b4df5c07a233620_320.mp4',
+    duration: '2:53',
+    durationMs: 173000,
+    releaseYear: '2022',
+    genre: 'Indie Soul',
+    plays: '410M',
+    explicit: false,
+    isFullLength: true,
+    quality: '320kbps Ultra HD',
+    lyrics: [
+      { time: 0, text: "♪ (Acoustic Guitar Melody Intro) ♪" },
+      { time: 12, text: "Kahani suno, haan zubani suno" },
+      { time: 24, text: "Mujhe pyar hua tha, iqraar hua tha" },
+      { time: 38, text: "Deewana hua mastaana hua" },
+      { time: 52, text: "Teri chahat mein kitna fasana hua" },
+      { time: 68, text: "Tere aane se pehle na aisi thi raat" },
+      { time: 84, text: "Kahani suno, zubani suno..." }
+    ]
+  },
+  {
+    id: 'local-goat',
+    title: 'G.O.A.T.',
+    artist: 'Diljit Dosanjh',
+    album: 'G.O.A.T.',
+    artwork: 'https://c.saavncdn.com/597/G-O-A-T--Punjabi-2020-20200729175317-500x500.jpg',
+    audioUrl: 'https://aac.saavncdn.com/597/ce842951d6cde3c4355046ca5e250809_320.mp4',
+    duration: '3:43',
+    durationMs: 223000,
+    releaseYear: '2020',
+    genre: 'Punjabi Hip-Hop',
+    plays: '390M',
+    explicit: false,
+    isFullLength: true,
+    quality: '320kbps Ultra HD',
+    lyrics: [
+      { time: 0, text: "♪ (Dhol & Modern Urban Bass Intro) ♪" },
+      { time: 12, text: "G.O.A.T. baneya kude munda shaan naal" },
+      { time: 24, text: "Diljit Dosanjh da na kade koi tod" },
+      { time: 36, text: "Akhiyan ch robh poora, chal dekh sardari" },
+      { time: 50, text: "Worldwide wajde record saare" },
+      { time: 64, text: "Ni asi G.O.A.T. ban baithe aan!" }
+    ]
+  },
+  {
+    id: 'local-raataan-lambiyan',
+    title: 'Raataan Lambiyan',
+    artist: 'Jubin Nautiyal, Asees Kaur & Tanishk Bagchi',
+    album: 'Shershaah',
+    artwork: 'https://c.saavncdn.com/238/Shershaah-Original-Motion-Picture-Soundtrack--Hindi-2021-20210815181610-500x500.jpg',
+    audioUrl: 'https://aac.saavncdn.com/238/35726d4394604604e961bf5b846870d0_320.mp4',
+    duration: '3:50',
+    durationMs: 230000,
+    releaseYear: '2021',
+    genre: 'Bollywood Romance',
+    plays: '740M',
+    explicit: false,
+    isFullLength: true,
+    quality: '320kbps Ultra HD',
+    lyrics: [
+      { time: 0, text: "♪ (Gentle Whistle & Acoustic Intro) ♪" },
+      { time: 14, text: "Teri meri gallan ho gayi mashhoor" },
+      { time: 26, text: "Kar na kabhi tu mujhe nazron se door" },
+      { time: 38, text: "Kithe chaliye tu kithe chaliye" },
+      { time: 52, text: "Kaatun kaise raataan o saawre" },
+      { time: 66, text: "Jiya nahi jaata sun bawre" },
+      { time: 80, text: "Ke raataan lambiyan lambiyan re" },
+      { time: 94, text: "Kate tere sangeyan sangeyan re" }
+    ]
   }
 ];
 
-export const QUICK_PICKS = LOCAL_CATALOG.slice(0, 5);
-export const TRENDING_HITS = [LOCAL_CATALOG[1], LOCAL_CATALOG[0], LOCAL_CATALOG[2], LOCAL_CATALOG[5], LOCAL_CATALOG[6]];
-export const BOLLYWOOD_SPECIAL = [LOCAL_CATALOG[0], LOCAL_CATALOG[1], LOCAL_CATALOG[2], LOCAL_CATALOG[5], LOCAL_CATALOG[7]];
+export const QUICK_PICKS = LOCAL_CATALOG.slice(0, 6);
+export const TRENDING_HITS = [LOCAL_CATALOG[1], LOCAL_CATALOG[0], LOCAL_CATALOG[2], LOCAL_CATALOG[10], LOCAL_CATALOG[13], LOCAL_CATALOG[15]];
+export const BOLLYWOOD_SPECIAL = [LOCAL_CATALOG[0], LOCAL_CATALOG[1], LOCAL_CATALOG[10], LOCAL_CATALOG[11], LOCAL_CATALOG[16], LOCAL_CATALOG[5]];
 
 export const TOP_CHARTS_INDIA = [
   { ...LOCAL_CATALOG[0], rank: 1, trend: '🔥 #1 Trending', badge: 'TOP 1' },
   { ...LOCAL_CATALOG[1], rank: 2, trend: '⚡ Hot Track', badge: 'TOP 2' },
   { ...LOCAL_CATALOG[2], rank: 3, trend: '🔺 Viral Dance', badge: 'TOP 3' },
-  { ...LOCAL_CATALOG[3], rank: 4, trend: '🎧 Chartbuster', badge: 'TOP 4' },
-  { ...LOCAL_CATALOG[4], rank: 5, trend: '✨ Global Hit', badge: 'TOP 5' },
-  { ...LOCAL_CATALOG[5], rank: 6, trend: '💖 Romantic Pick', badge: 'TOP 6' },
-  { ...LOCAL_CATALOG[6], rank: 7, trend: '🌟 Mega Stream', badge: 'TOP 7' },
-  { ...LOCAL_CATALOG[7], rank: 8, trend: '🎤 Indie Top', badge: 'TOP 8' }
+  { ...LOCAL_CATALOG[10], rank: 4, trend: '💖 Love Anthem', badge: 'TOP 4' },
+  { ...LOCAL_CATALOG[13], rank: 5, trend: '🎧 Chartbuster', badge: 'TOP 5' },
+  { ...LOCAL_CATALOG[3], rank: 6, trend: '⚡ Punjabi Hype', badge: 'TOP 6' },
+  { ...LOCAL_CATALOG[15], rank: 7, trend: '👑 Urban King', badge: 'TOP 7' },
+  { ...LOCAL_CATALOG[14], rank: 8, trend: '🌟 Viral Melody', badge: 'TOP 8' },
+  { ...LOCAL_CATALOG[4], rank: 9, trend: '✨ Global Hit', badge: 'TOP 9' },
+  { ...LOCAL_CATALOG[16], rank: 10, trend: '🎤 Pure Romance', badge: 'TOP 10' }
 ];
 
 export const DAILY_MIXES = [
   {
     id: 'mix-1',
-    title: 'Daily Mix 1',
-    subtitle: 'Arijit Singh, Jasleen Royal, Pritam & more',
-    artwork: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&auto=format&fit=crop&q=80',
+    title: 'Daily Mix 1 (Bollywood Romance)',
+    subtitle: 'Arijit Singh, Sachin-Jigar, Mithoon, Pritam',
+    artwork: 'https://c.saavncdn.com/423/Arijit-Singh-All-Time-Best-Hindi-Hit-Love-Songs-Collection-Hindi-2026-20261008160834-500x500.jpg',
     accentColor: '#ff9f00',
-    tracks: [LOCAL_CATALOG[0], LOCAL_CATALOG[5], LOCAL_CATALOG[7]]
+    tracks: [LOCAL_CATALOG[0], LOCAL_CATALOG[10], LOCAL_CATALOG[11], LOCAL_CATALOG[5], LOCAL_CATALOG[16]]
   },
   {
     id: 'mix-2',
-    title: 'Daily Mix 2',
-    subtitle: 'AP Dhillon, Karan Aujla, Intense & more',
-    artwork: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&auto=format&fit=crop&q=80',
+    title: 'Daily Mix 2 (Punjabi Heat & Pop)',
+    subtitle: 'Karan Aujla, Diljit Dosanjh, AP Dhillon',
+    artwork: 'https://c.saavncdn.com/992/Bad-Newz-Hindi-2024-20250730113701-500x500.jpg',
     accentColor: '#ff4757',
-    tracks: [LOCAL_CATALOG[2], LOCAL_CATALOG[3]]
+    tracks: [LOCAL_CATALOG[2], LOCAL_CATALOG[13], LOCAL_CATALOG[15], LOCAL_CATALOG[12], LOCAL_CATALOG[3]]
   },
   {
     id: 'mix-3',
-    title: 'Daily Mix 3',
-    subtitle: 'The Weeknd, Daft Punk, Dua Lipa & more',
-    artwork: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&auto=format&fit=crop&q=80',
+    title: 'Daily Mix 3 (Global Hits & Synthwave)',
+    subtitle: 'The Weeknd, Daft Punk, Dua Lipa, Ed Sheeran',
+    artwork: 'https://c.saavncdn.com/077/After-Hours-English-2020-20260804045014-500x500.jpg',
     accentColor: '#2ed573',
-    tracks: [LOCAL_CATALOG[4], LOCAL_CATALOG[6], LOCAL_CATALOG[8]]
+    tracks: [LOCAL_CATALOG[4], LOCAL_CATALOG[6], LOCAL_CATALOG[8], LOCAL_CATALOG[9]]
   },
   {
     id: 'mix-4',
-    title: 'Daily Mix 4',
-    subtitle: 'King, Anirudh Ravichander, Ed Sheeran & more',
-    artwork: 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=600&auto=format&fit=crop&q=80',
+    title: 'Daily Mix 4 (Soulful & Trending Indie)',
+    subtitle: 'Kaifi Khalil, King, Anirudh Ravichander',
+    artwork: 'https://c.saavncdn.com/352/Kahani-Suno-2-0-Urdu-2022-20230629165609-500x500.jpg',
     accentColor: '#2874f0',
-    tracks: [LOCAL_CATALOG[1], LOCAL_CATALOG[7], LOCAL_CATALOG[9]]
+    tracks: [LOCAL_CATALOG[14], LOCAL_CATALOG[7], LOCAL_CATALOG[1], LOCAL_CATALOG[5]]
   }
 ];
 
@@ -342,7 +523,7 @@ export const CURATED_PLAYLISTS = [
     description: 'The sweetest romantic melodies for your heart',
     artwork: 'https://c.saavncdn.com/423/Arijit-Singh-All-Time-Best-Hindi-Hit-Love-Songs-Collection-Hindi-2026-20261008160834-500x500.jpg',
     trackCount: '50 Songs • 3h 12m',
-    songs: [LOCAL_CATALOG[0], LOCAL_CATALOG[1], LOCAL_CATALOG[5], LOCAL_CATALOG[7]]
+    songs: [LOCAL_CATALOG[0], LOCAL_CATALOG[10], LOCAL_CATALOG[1], LOCAL_CATALOG[11], LOCAL_CATALOG[16]]
   },
   {
     id: 'pl-punjabi',
@@ -350,15 +531,15 @@ export const CURATED_PLAYLISTS = [
     description: 'High octane dhol, bass drops and viral hooks',
     artwork: 'https://c.saavncdn.com/992/Bad-Newz-Hindi-2024-20250730113701-500x500.jpg',
     trackCount: '45 Songs • 2h 45m',
-    songs: [LOCAL_CATALOG[2], LOCAL_CATALOG[3]]
+    songs: [LOCAL_CATALOG[2], LOCAL_CATALOG[13], LOCAL_CATALOG[15], LOCAL_CATALOG[12], LOCAL_CATALOG[3]]
   },
   {
     id: 'pl-lofi',
-    title: 'Late Night Chill & Lo-Fi',
+    title: 'Late Night Chill & Soul',
     description: 'Slowed reverb & acoustic relaxing aesthetics',
-    artwork: 'https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600&auto=format&fit=crop&q=80',
+    artwork: 'https://c.saavncdn.com/352/Kahani-Suno-2-0-Urdu-2022-20230629165609-500x500.jpg',
     trackCount: '60 Songs • 3h 40m',
-    songs: [LOCAL_CATALOG[5], LOCAL_CATALOG[7], LOCAL_CATALOG[0]]
+    songs: [LOCAL_CATALOG[14], LOCAL_CATALOG[5], LOCAL_CATALOG[7], LOCAL_CATALOG[0]]
   },
   {
     id: 'pl-workout',
@@ -366,6 +547,6 @@ export const CURATED_PLAYLISTS = [
     description: 'Pure motivation, synthpop beats and gym fuel',
     artwork: 'https://c.saavncdn.com/077/After-Hours-English-2020-20260804045014-500x500.jpg',
     trackCount: '40 Songs • 2h 15m',
-    songs: [LOCAL_CATALOG[4], LOCAL_CATALOG[6], LOCAL_CATALOG[8]]
+    songs: [LOCAL_CATALOG[4], LOCAL_CATALOG[6], LOCAL_CATALOG[8], LOCAL_CATALOG[2]]
   }
 ];

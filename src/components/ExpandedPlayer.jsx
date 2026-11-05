@@ -22,6 +22,7 @@ import {
   Info
 } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
+import { fetchSynchronizedLyrics } from '../services/lyricsService';
 
 export default function ExpandedPlayer() {
   const {
@@ -63,6 +64,32 @@ export default function ExpandedPlayer() {
 
   const activeLyricRef = useRef(null);
   const lyricsScrollerRef = useRef(null);
+  const [liveLyrics, setLiveLyrics] = useState(currentTrack?.lyrics || []);
+  const [isLoadingLyrics, setIsLoadingLyrics] = useState(false);
+
+  // Dynamic Lyrics Fetcher (LRCLIB + Local Database)
+  useEffect(() => {
+    if (!currentTrack) return;
+    let isCancelled = false;
+
+    if (currentTrack.lyrics && currentTrack.lyrics.length > 0) {
+      setLiveLyrics(currentTrack.lyrics);
+    } else {
+      setIsLoadingLyrics(true);
+      fetchSynchronizedLyrics(currentTrack.title, currentTrack.artist, duration).then(lyrics => {
+        if (!isCancelled) {
+          setLiveLyrics(lyrics);
+          setIsLoadingLyrics(false);
+        }
+      }).catch(() => {
+        if (!isCancelled) setIsLoadingLyrics(false);
+      });
+    }
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [currentTrack?.id, currentTrack?.title, duration]);
 
   // Auto-scroll the active lyric into the center
   useEffect(() => {
@@ -371,33 +398,47 @@ export default function ExpandedPlayer() {
             <div className="lyrics-container">
               <div className="lyrics-header">
                 <h3>Synchronized Studio Lyrics</h3>
-                <span className="full-song-pill">COMPLETE SONG</span>
+                <span className="full-song-pill">VIP SYNCED</span>
               </div>
-              <div className="lyrics-scroller" ref={lyricsScrollerRef}>
-                {currentTrack.lyrics && currentTrack.lyrics.length > 0 ? (
-                  currentTrack.lyrics.map((line, idx) => {
-                    const isPassed = currentTime >= line.time;
-                    const isNextLine = idx < currentTrack.lyrics.length - 1 && currentTime >= currentTrack.lyrics[idx + 1].time;
-                    const isHighlight = isPassed && !isNextLine;
 
-                    return (
-                      <p
-                        key={idx}
-                        ref={isHighlight ? activeLyricRef : null}
-                        onClick={() => seekTo(line.time)}
-                        className={`lyric-line ${isHighlight ? 'active-lyric' : ''} ${isPassed ? 'passed-lyric' : ''}`}
-                      >
-                        {line.text}
-                      </p>
-                    );
-                  })
-                ) : (
-                  <div className="no-lyrics">
-                    <Music2 size={48} className="no-lyrics-icon" />
-                    <p>Lyrics loading or unavailable for this track</p>
+              {isLoadingLyrics ? (
+                <div className="no-lyrics">
+                  <div className="eq-container" style={{ margin: '30px auto' }}>
+                    <div className="eq-bar" />
+                    <div className="eq-bar" />
+                    <div className="eq-bar" />
+                    <div className="eq-bar" />
                   </div>
-                )}
-              </div>
+                  <p>Matching synchronized studio lyrics for "{currentTrack.title}"...</p>
+                </div>
+              ) : (
+                <div className="lyrics-scroller" ref={lyricsScrollerRef}>
+                  {liveLyrics && liveLyrics.length > 0 ? (
+                    liveLyrics.map((line, idx) => {
+                      const isPassed = currentTime >= line.time;
+                      const isNextLine = idx < liveLyrics.length - 1 && currentTime >= liveLyrics[idx + 1].time;
+                      const isHighlight = isPassed && !isNextLine;
+
+                      return (
+                        <p
+                          key={idx}
+                          ref={isHighlight ? activeLyricRef : null}
+                          onClick={() => seekTo(line.time)}
+                          className={`lyric-line ${isHighlight ? 'active-lyric' : ''} ${isPassed ? 'passed-lyric' : ''}`}
+                          title={`Jump to ${Math.floor(line.time / 60)}:${Math.floor(line.time % 60).toString().padStart(2, '0')}`}
+                        >
+                          {line.text}
+                        </p>
+                      );
+                    })
+                  ) : (
+                    <div className="no-lyrics">
+                      <Music2 size={48} className="no-lyrics-icon" />
+                      <p>Instrumental track or lyrics currently unavailable</p>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
 
