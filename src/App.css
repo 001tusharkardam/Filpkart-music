@@ -1662,21 +1662,34 @@
 }
 
 .lyric-line {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
-  color: var(--text-muted);
-  transition: all 0.3s;
+  color: rgba(255, 255, 255, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 12px;
+  line-height: 1.45;
+  user-select: text;
 }
 
-.lyric-line.active-lyric {
-  color: var(--flipkart-yellow);
-  font-size: 28px;
-  transform: scale(1.02);
+.lyric-line:hover {
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.lyric-line.active-lyric,
+.lyric-line.active {
+  color: var(--flipkart-yellow) !important;
+  font-size: 26px !important;
+  font-weight: 800 !important;
+  transform: scale(1.03);
+  text-shadow: 0 0 20px rgba(255, 159, 0, 0.5);
+  background: rgba(255, 159, 0, 0.08);
 }
 
 .lyric-line.passed-lyric {
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .no-lyrics {

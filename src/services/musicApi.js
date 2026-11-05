@@ -37,22 +37,32 @@ export function decryptSaavnUrl(encUrl) {
   }
 }
 
-// Generates synchronized lyrics across the FULL song length
-function generateFullSongLyrics(songTitle, artistName, durationSec = 210) {
-  const dur = Math.max(120, durationSec || 210);
-  const step = Math.floor(dur / 9);
+export const REAL_ARTIST_PORTRAITS = {
+  'arijit singh': 'https://cdn-images.dzcdn.net/images/artist/ac5350cff290edd5b69fa584b8b1bd4f/500x500-000000-80-0-0.jpg',
+  'the weeknd': 'https://cdn-images.dzcdn.net/images/artist/581693b4724a7fcfa754455101e13a44/500x500-000000-80-0-0.jpg',
+  'karan aujla': 'https://cdn-images.dzcdn.net/images/artist/a91a1d5ea91e85e4f0966569b50e8d6a/500x500-000000-80-0-0.jpg',
+  'ap dhillon': 'https://cdn-images.dzcdn.net/images/artist/52594ac9fa763dc163ed13d21cb130ec/500x500-000000-80-0-0.jpg',
+  'diljit dosanjh': 'https://cdn-images.dzcdn.net/images/artist/79b85e695e0ca6529e56bf3b628e92bd/500x500-000000-80-0-0.jpg',
+  'shreya ghoshal': 'https://cdn-images.dzcdn.net/images/artist/3bb832d37d10ff2affcfa9afdc7c68a0/500x500-000000-80-0-0.jpg',
+  'dua lipa': 'https://cdn-images.dzcdn.net/images/artist/877872aaf75694f11d53c318700ab2b5/500x500-000000-80-0-0.jpg',
+  'jasleen royal': 'https://cdn-images.dzcdn.net/images/artist/c83791c10f0ec33e1d8a18b1a8ff9f84/500x500-000000-80-0-0.jpg',
+  'atif aslam': 'https://cdn-images.dzcdn.net/images/artist/0ea90444148fff9c11d77f06a344724e/500x500-000000-80-0-0.jpg',
+  'king': 'https://cdn-images.dzcdn.net/images/artist/a2abdf367a086764c0d8b0e8d8a6832c/500x500-000000-80-0-0.jpg',
+  'ed sheeran': 'https://cdn-images.dzcdn.net/images/artist/d6bb84390641d8ae9118228d9544e53d/500x500-000000-80-0-0.jpg',
+  'pritam': 'https://cdn-images.dzcdn.net/images/artist/d4914ccd414067cd5e2c108867079a85/500x500-000000-80-0-0.jpg',
+  'anirudh ravichander': 'https://cdn-images.dzcdn.net/images/artist/9da0a547b39e99bc35c6a9724aef91bf/500x500-000000-80-0-0.jpg',
+  'kaifi khalil': 'https://c.saavncdn.com/352/Kahani-Suno-2-0-Urdu-2022-20230629165609-500x500.jpg',
+  'jubin nautiyal': 'https://c.saavncdn.com/238/Shershaah-Original-Motion-Picture-Soundtrack--Hindi-2021-20210815181610-500x500.jpg',
+  'sachin-jigar': 'https://c.saavncdn.com/195/Heartbeats-Bollywood-Hindi-2026-20260813104641-500x500.jpg'
+};
 
-  return [
-    { time: 0, text: `♪ (Full Track Intro Beats - ${songTitle}) ♪` },
-    { time: Math.min(12, Math.floor(step * 0.7)), text: `Now listening to: ${songTitle}` },
-    { time: Math.floor(step * 1.5), text: `Vocals & Composition by ${artistName}` },
-    { time: Math.floor(step * 2.5), text: `♪ Verse 1: Feel the rhythm and melody in 320kbps Ultra HD ♪` },
-    { time: Math.floor(step * 3.8), text: `♪ Chorus: Singing along to ${songTitle} ♪` },
-    { time: Math.floor(step * 5.0), text: `♪ (Instrumental Solo & Studio Beats) ♪` },
-    { time: Math.floor(step * 6.5), text: `♪ Verse 2: Heartbeats syncing with every chord ♪` },
-    { time: Math.floor(step * 7.8), text: `♪ Grand Chorus: ${songTitle} - Flipkart Music Studio HD ♪` },
-    { time: Math.floor(step * 8.8), text: `♪ (Outro Melodies - Next Track Queued) ♪` }
-  ];
+export function getArtistPortrait(name) {
+  if (!name) return null;
+  const lower = name.toLowerCase().trim();
+  for (const [k, url] of Object.entries(REAL_ARTIST_PORTRAITS)) {
+    if (lower.includes(k) || k.includes(lower)) return url;
+  }
+  return null;
 }
 
 export async function searchMusic(query) {
@@ -107,7 +117,7 @@ export async function searchMusic(query) {
               explicit: item.explicit_content === '1',
               isFullLength: true,
               quality: '320kbps Ultra HD',
-              lyrics: generateFullSongLyrics(songTitle, artistName, durationSec)
+              lyrics: null
             };
           })
           .filter(Boolean);
@@ -176,7 +186,7 @@ export async function searchMusic(query) {
           appleMusicUrl: item.trackViewUrl,
           isFullLength: true,
           quality: 'Master Audio',
-          lyrics: generateFullSongLyrics(songName, artistName, Math.floor((item.trackTimeMillis || 210000) / 1000))
+          lyrics: null
         };
       });
     }
@@ -242,7 +252,7 @@ function processCategorizedResults(songs, query) {
       artistsMap.set(mainArtist, {
         id: `artist-${mainArtist}`,
         name: mainArtist,
-        avatar: song.artwork,
+        avatar: getArtistPortrait(mainArtist) || song.artwork,
         subscribers: `${(Math.floor(Math.random() * 20) + 2).toFixed(1)}M Subscribers`,
         verified: true
       });
@@ -359,7 +369,7 @@ export async function fetchRelatedMusic(track) {
           durationMs: dur * 1000,
           quality: '320kbps Ultra HD',
           isFullLength: true,
-          lyrics: generateFullSongLyrics(item.song, item.singers, dur)
+          lyrics: null
         };
       }).filter(Boolean);
 
@@ -388,7 +398,7 @@ export async function fetchRelatedMusic(track) {
           durationMs: dur * 1000,
           quality: '320kbps Ultra HD',
           isFullLength: true,
-          lyrics: generateFullSongLyrics(item.song, item.singers, dur)
+          lyrics: null
         };
       }).filter(Boolean).filter(s => s.title.toLowerCase() !== track.title.toLowerCase());
     }

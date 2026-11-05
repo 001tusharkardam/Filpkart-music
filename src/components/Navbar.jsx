@@ -249,7 +249,7 @@ export default function Navbar() {
             title="Click to view Profile & Settings"
           >
             <img
-              src={currentUser?.avatar || 'https://api.dicebear.com/7.x/adventurer/svg?seed=TusharMusicVIP'}
+              src={currentUser?.avatar || 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300'}
               alt={currentUser?.name || 'User'}
               className="user-avatar-img"
             />
@@ -262,7 +262,7 @@ export default function Navbar() {
             <div className="profile-dropdown glass-panel">
               <div className="dropdown-user-header">
                 <img
-                  src={currentUser?.avatar || 'https://api.dicebear.com/7.x/adventurer/svg?seed=TusharMusicVIP'}
+                  src={currentUser?.avatar || 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300'}
                   alt="avatar"
                   className="dropdown-avatar"
                 />

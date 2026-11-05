@@ -31,7 +31,7 @@ export function AuthProvider({ children }) {
         isVerified: true,
         role: 'vip_subscriber',
         plan: 'Flipkart VIP Plus • 320kbps',
-        avatar: 'https://api.dicebear.com/7.x/adventurer/svg?seed=TusharMusicVIP',
+        avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300',
         joinedAt: '28 Oct 2026',
         permissions: ['unlimited_streaming', 'studio_hd_320kbps', 'synced_lyrics', 'ad_free', 'offline_mode']
       }
@@ -181,7 +181,7 @@ export function AuthProvider({ children }) {
       isVerified: true,
       role: 'vip_subscriber',
       plan: 'Flipkart VIP Plus • 320kbps',
-      avatar: `https://api.dicebear.com/7.x/notionists/svg?seed=${encodeURIComponent(pendingAuth.name)}`,
+      avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300',
       joinedAt: new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }),
       permissions: ['unlimited_streaming', 'studio_hd_320kbps', 'synced_lyrics', 'ad_free', 'offline_mode']
     };

@@ -278,13 +278,9 @@ export function PlayerProvider({ children }) {
       const liveDuration = (audio.duration && !isNaN(audio.duration) && audio.duration > 0) ? audio.duration : duration;
       const safeTime = Math.max(0, Math.min(seconds, liveDuration));
       try {
-        if (typeof audio.fastSeek === 'function') {
-          audio.fastSeek(safeTime);
-        } else {
-          audio.currentTime = safeTime;
-        }
-      } catch (err) {
         audio.currentTime = safeTime;
+      } catch (err) {
+        console.warn('Seek error:', err);
       }
       setCurrentTime(safeTime);
     }

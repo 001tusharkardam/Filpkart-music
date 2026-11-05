@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import {
   ChevronDown,
   Play,
@@ -64,42 +64,68 @@ export default function ExpandedPlayer() {
 
   const activeLyricRef = useRef(null);
   const lyricsScrollerRef = useRef(null);
+  const isUserScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef(null);
   const [liveLyrics, setLiveLyrics] = useState(currentTrack?.lyrics || []);
   const [isLoadingLyrics, setIsLoadingLyrics] = useState(false);
 
-  // Dynamic Lyrics Fetcher (LRCLIB + Local Database)
+  // Studio Synchronized Lyrics Fetcher
   useEffect(() => {
     if (!currentTrack) return;
     let isCancelled = false;
 
-    if (currentTrack.lyrics && currentTrack.lyrics.length > 0) {
-      setLiveLyrics(currentTrack.lyrics);
-    } else {
-      setIsLoadingLyrics(true);
-      fetchSynchronizedLyrics(currentTrack.title, currentTrack.artist, duration).then(lyrics => {
+    setIsLoadingLyrics(true);
+    fetchSynchronizedLyrics(currentTrack.title, currentTrack.artist, duration)
+      .then(lyrics => {
         if (!isCancelled) {
-          setLiveLyrics(lyrics);
+          setLiveLyrics(lyrics || []);
           setIsLoadingLyrics(false);
         }
-      }).catch(() => {
-        if (!isCancelled) setIsLoadingLyrics(false);
+      })
+      .catch(() => {
+        if (!isCancelled) {
+          setIsLoadingLyrics(false);
+        }
       });
-    }
 
     return () => {
       isCancelled = true;
     };
   }, [currentTrack?.id, currentTrack?.title, duration]);
 
-  // Auto-scroll the active lyric into the center
+  // Compute active lyric line with 150ms anticipation offset for studio sync
+  const activeLyricIndex = useMemo(() => {
+    if (!liveLyrics || liveLyrics.length === 0) return -1;
+    let idx = -1;
+    const vocalTime = currentTime + 0.15;
+    for (let i = 0; i < liveLyrics.length; i++) {
+      if (vocalTime >= liveLyrics[i].time) {
+        idx = i;
+      } else {
+        break;
+      }
+    }
+    return idx;
+  }, [liveLyrics, currentTime]);
+
+  const handleManualScroll = () => {
+    isUserScrollingRef.current = true;
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    scrollTimeoutRef.current = setTimeout(() => {
+      isUserScrollingRef.current = false;
+    }, 2500);
+  };
+
+  // Auto-scroll ONLY when active lyric actually advances to the next line (eliminates jank/glitch)
   useEffect(() => {
-    if (activeLyricRef.current && lyricsScrollerRef.current) {
+    if (isUserScrollingRef.current) return;
+    if (activeLyricIndex >= 0 && activeLyricRef.current && lyricsScrollerRef.current) {
       activeLyricRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'center'
       });
     }
-  }, [currentTime]);
+  }, [activeLyricIndex]);
 
   const [isDragging, setIsDragging] = useState(false);
   const [dragTime, setDragTime] = useState(0);
@@ -412,12 +438,17 @@ export default function ExpandedPlayer() {
                   <p>Matching synchronized studio lyrics for "{currentTrack.title}"...</p>
                 </div>
               ) : (
-                <div className="lyrics-scroller" ref={lyricsScrollerRef}>
+                <div
+                  className="lyrics-scroller"
+                  ref={lyricsScrollerRef}
+                  onScroll={handleManualScroll}
+                  onTouchStart={handleManualScroll}
+                  onWheel={handleManualScroll}
+                >
                   {liveLyrics && liveLyrics.length > 0 ? (
                     liveLyrics.map((line, idx) => {
-                      const isPassed = currentTime >= line.time;
-                      const isNextLine = idx < liveLyrics.length - 1 && currentTime >= liveLyrics[idx + 1].time;
-                      const isHighlight = isPassed && !isNextLine;
+                      const isPassed = idx < activeLyricIndex;
+                      const isHighlight = idx === activeLyricIndex;
 
                       return (
                         <p
